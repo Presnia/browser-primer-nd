@@ -72,7 +72,57 @@ const browserTree = {
 
 // рекурсия
 
-const nodesHierarchy = {};
+const nodesHierarchy = {
+  label: "EventTarget",
+  children: [
+    {
+      label: "Node",
+      children: [
+        {
+          label: "Text",
+          children: [],
+        },
+        {
+          label: "Comment",
+          children: [],
+        },
+        {
+          label: "Element",
+          children: [],
+        },
+      ],
+    },
+    {
+      label: "level-2",
+      children: [
+        {
+          label: "SVGElement",
+          children: [],
+        },{
+          label: "HTMLElement",
+          children: [],
+        },
+      ],
+    },
+    {
+      label: "level-3",
+      children: [
+        {
+          label: "HTMLInputElement",
+          children: [],
+        },
+        {
+          label: "HTMLBodyElement",
+          children: [],
+        },
+        {
+          label: "HTMLAnchorElement",
+          children: [],
+        },
+      ],
+    },
+  ],
+};
 
 function renderTree(tree) {
   const rootUlElement = document.createElement("ul");

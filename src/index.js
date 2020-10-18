@@ -88,26 +88,14 @@ const nodesHierarchy = {
         },
         {
           label: "Element",
-          children: [],
-        },
-      ],
-    },
-    {
-      label: "level-2",
-      children: [
-        {
+          children: [
+            {
           label: "SVGElement",
           children: [],
         },{
           label: "HTMLElement",
-          children: [],
-        },
-      ],
-    },
-    {
-      label: "level-3",
-      children: [
-        {
+          children: [
+            {
           label: "HTMLInputElement",
           children: [],
         },
@@ -118,6 +106,10 @@ const nodesHierarchy = {
         {
           label: "HTMLAnchorElement",
           children: [],
+        },
+          ],
+        },
+          ],
         },
       ],
     },

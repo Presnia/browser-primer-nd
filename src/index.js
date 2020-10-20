@@ -117,9 +117,71 @@ const nodesHierarchy = {
 };
 
 function renderTree(tree) {
-  const rootUlElement = document.createElement("ul");
+    const rootUlElement = document.createElement("ul");
+    rootUlElement.style.background = "tomato";
+    rootUlElement.id = "topic-list2";
 
-  // conver tree into elements
+    const liEvent = document.createElement("li");
+    rootUlElement.append(liEvent);
+    liEvent.innerHTML = "EventTarget";
+
+    const ulEvent = document.createElement("ul");
+    rootUlElement.append(ulEvent);
+    
+    const liNode = document.createElement("li");
+    ulEvent.append(liNode);
+    liNode.innerHTML = "Node";
+
+    const ulNode = document.createElement("ul");
+    ulEvent.append(ulNode);
+    ulNode.classList.add('sub-list1');
+
+    const liText = document.createElement("li");
+    ulNode.append(liText);
+    liText.innerHTML = "Text";
+    liText.classList.add('for-query');
+
+    const liText1 = document.createElement("li");
+    ulNode.append(liText1);
+    liText1.innerHTML = "Comment";
+    liText1.classList.add('for-query');
+
+    const liText2 = document.createElement("li");
+    ulNode.append(liText2);
+    liText2.innerHTML = "Element";
+    liText2.classList.add('for-query');
+
+    const ulElement = document.createElement("ul");
+    ulNode.append(ulElement);
+
+    const liElement1 = document.createElement("li");
+    ulElement.append(liElement1);
+    liElement1.innerHTML = "SVGElement";
+
+    const liElement2 = document.createElement("li");
+    ulElement.append(liElement2);
+    liElement2.innerHTML = "HTMLElement";
+
+    const ulHTMLElement = document.createElement("ul");
+    liElement2.append(ulHTMLElement);
+
+    const liHTMLElement1 = document.createElement("li");
+    ulHTMLElement.append(liHTMLElement1);
+    liHTMLElement1.innerHTML = "HTMLInputElement";
+
+    const liHTMLElement2 = document.createElement("li");
+    ulHTMLElement.append(liHTMLElement2);
+    liHTMLElement2.innerHTML = "HTMLBodyElement";
+
+    const liHTMLElement3 = document.createElement("li");
+    ulHTMLElement.append(liHTMLElement3);
+    liHTMLElement3.innerHTML = "HTMLAnchorElement";
+    
+
+// convert tree into elements
+    const rootDiv = document.getElementById("root");
+    rootDiv.style.background = "silver";
+    rootDiv.style.padding = "10px";
 
   return rootUlElement;
 }

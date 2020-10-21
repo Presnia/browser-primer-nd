@@ -121,16 +121,20 @@ function renderTree(tree) {
     rootUlElement.style.background = "tomato";
     rootUlElement.id = "topic-list2";
 
+    const treeThis = () => nodesHierarchy.label;
+    console.log(nodesHierarchy.label);
+
     const liEvent = document.createElement("li");
     rootUlElement.append(liEvent);
-    liEvent.innerHTML = "EventTarget";
+    liEvent.classList.add('li-event');
+    liEvent.innerHTML = treeThis.call(tree);
 
     const ulEvent = document.createElement("ul");
     rootUlElement.append(ulEvent);
     
     const liNode = document.createElement("li");
     ulEvent.append(liNode);
-    liNode.innerHTML = "Node";
+    liNode.innerHTML = treeThis.call(tree);
 
     const ulNode = document.createElement("ul");
     ulEvent.append(ulNode);

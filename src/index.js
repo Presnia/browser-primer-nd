@@ -121,8 +121,8 @@ function renderTree(tree) {
     rootUlElement.style.background = "tomato";
     rootUlElement.id = "topic-list2";
 
-    const treeThis = () => nodesHierarchy.label;
-    console.log(nodesHierarchy.label);
+    const treeThis = () => Object.values(nodesHierarchy);
+    console.log(Object.values(nodesHierarchy));
 
     const liEvent = document.createElement("li");
     rootUlElement.append(liEvent);

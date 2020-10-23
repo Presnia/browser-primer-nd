@@ -4,71 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Browser Primer</title>
-    <style>
-      .alert {
-        padding: 15px;
-        border: 1px solid #d6e9c6;
-        border-radius: 4px;
-        color: #3c763d;
-        background-color: #dff0d8;
-      }
-    </style>
   </head>
   <body id="body-id" myCoolAttribute="content!!!">
     <noscript>Turn JS on, pleeease</noscript>
     <h1>Browser Primer</h1>
-    <div id="root">
-      <ul id="topic-list">
-        <li>Window</li>
-        <ul>
-          <li>DOM - Document Object Model; DOM Tree</li>
-          <ul class="sub-list1">
-            <li>document</li>
-            <li>CSSOM - CSS Object Model</li>
-          </ul>
-          <li>BOM - Browser Object Model</li>
-          <ul class="sub-list2">
-            <li class="for-query">navigator</li>
-            <li class="for-query">screen</li>
-            <li class="for-query">location</li>
-            <li class="for-query">frames</li>
-            <li class="for-query">history</li>
-            <li class="for-query">XMLHttpReques</li>
-          </ul>
-          <li>JavaScript</li>
-          <ul class="sub-list3">
-            <li class="for-query">Object</li>
-            <li>Array</li>
-            <li class="function-sub-item">Function</li>
-            <li>...</li>
-          </ul>
-        </ul>
-      </ul>
-    </div>
-    <ul id="topic-list2">
-      <li>EventTarget</li>
-      <ul>
-        <li>Node</li>
-        <ul class="sub-list1">
-          <li class="for-query">Text</li>
-          <li class="for-query">Comment</li>
-          <li class="for-query" class="sub-list2">Element</li>
-          <ul>
-            <li class="for-query">SVGElement</li>
-            <li class="for-query" class="sub-list3">HTMLElement</li>
-            <ul>
-              <li class="for-query">HTMLInputElement</li>
-              <li class="for-query">HTMLBodyElement</li>
-              <li class="for-query">HTMLAnchorElement</li>
-            </ul>
-          </ul>
-        </ul>
-      </ul>
-    </ul>
+    <div id="root"></div>
+      
     <script type="module">
-      import { buildPage, renderPage } from "../src/index.js";
-
-      // buildPage();
+      import { buildPage,renderPage } from "../src/index.js";
       renderPage();
     </script>
   </body>

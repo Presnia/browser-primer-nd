@@ -116,87 +116,63 @@ const nodesHierarchy = {
   ],
 };
 
-function renderTree(tree) {
-    const rootUlElement = document.createElement("ul");
-    rootUlElement.style.background = "tomato";
-    rootUlElement.id = "topic-list2";
+function renderTree(treeArray) {
+  if (treeArray.length === 0) return null;
 
-    const treeThis = () => Object.values(nodesHierarchy);
-    console.log(Object.values(nodesHierarchy));
+  const rootUlElement = document.createElement("ul");
 
-    const liEvent = document.createElement("li");
-    rootUlElement.append(liEvent);
-    liEvent.classList.add('li-event');
-    liEvent.innerHTML = treeThis.call(tree);
+  treeArray.forEach((node) => {
+    const liElement = document.createElement("li");
+    liElement.innerHTML = node.label;
+    rootUlElement.append(liElement);
 
-    const ulEvent = document.createElement("ul");
-    rootUlElement.append(ulEvent);
-    
-    const liNode = document.createElement("li");
-    ulEvent.append(liNode);
-    liNode.innerHTML = treeThis.call(tree);
-
-    const ulNode = document.createElement("ul");
-    ulEvent.append(ulNode);
-    ulNode.classList.add('sub-list1');
-
-    const liText = document.createElement("li");
-    ulNode.append(liText);
-    liText.innerHTML = "Text";
-    liText.classList.add('for-query');
-
-    const liText1 = document.createElement("li");
-    ulNode.append(liText1);
-    liText1.innerHTML = "Comment";
-    liText1.classList.add('for-query');
-
-    const liText2 = document.createElement("li");
-    ulNode.append(liText2);
-    liText2.innerHTML = "Element";
-    liText2.classList.add('for-query');
-
-    const ulElement = document.createElement("ul");
-    ulNode.append(ulElement);
-
-    const liElement1 = document.createElement("li");
-    ulElement.append(liElement1);
-    liElement1.innerHTML = "SVGElement";
-
-    const liElement2 = document.createElement("li");
-    ulElement.append(liElement2);
-    liElement2.innerHTML = "HTMLElement";
-
-    const ulHTMLElement = document.createElement("ul");
-    liElement2.append(ulHTMLElement);
-
-    const liHTMLElement1 = document.createElement("li");
-    ulHTMLElement.append(liHTMLElement1);
-    liHTMLElement1.innerHTML = "HTMLInputElement";
-
-    const liHTMLElement2 = document.createElement("li");
-    ulHTMLElement.append(liHTMLElement2);
-    liHTMLElement2.innerHTML = "HTMLBodyElement";
-
-    const liHTMLElement3 = document.createElement("li");
-    ulHTMLElement.append(liHTMLElement3);
-    liHTMLElement3.innerHTML = "HTMLAnchorElement";
-    
-
-// convert tree into elements
-    const rootDiv = document.getElementById("root");
-    rootDiv.style.background = "silver";
-    rootDiv.style.padding = "10px";
+    const subTree = renderTree(node.children);
+    if (subTree !== null) rootUlElement.append(subTree);
+  });
 
   return rootUlElement;
 }
 
+function wholeArray() {
+  let arr1 = Object.values(browserTree);
+  let arr2 = Object.values(nodesHierarchy);
+  let result = [...arr1, ...arr2];
+
+  return result;
+}
+const trees = wholeArray();
+
+const complexArray = [1, 2, 3, [4, 5, 6, [7, 8, 9], 10, [11, 12]]];
+
+function flattenArray(array) {
+  let result = [];
+  array.forEach((value) => {
+    if (Array.isArray(value)) {
+      result = [...result, ...flattenArray(value)];
+    } else {
+      result = [...result, value];
+    }
+  });
+  return result;
+}
+
+function renderArray(array) {
+  const p = document.createElement("p");
+  p.innerHTML = JSON.stringify(array);
+  return p;
+}
+
 export function renderPage() {
-  const browserTreeList = renderTree(browserTree);
-  const nodesHierarchyList = renderTree(nodesHierarchy);
+  const tree = renderTree([browserTree, nodesHierarchy]);
 
   const rootDiv = document.getElementById("root");
-  rootDiv.append(browserTreeList);
-  rootDiv.append(nodesHierarchyList);
+  if (tree !== null) rootDiv.append(tree);
+
+  const flatArray = flattenArray(complexArray);
+  rootDiv.append(renderArray(flatArray));
+
+  const flatOurArray = flattenArray(trees);
+  rootDiv.append(renderArray(flatOurArray));
 }
 
 export function buildPage() {
@@ -204,6 +180,18 @@ export function buildPage() {
     name: "Js",
     place: "IT-Academy",
   };
+
+
+
+
+
+
+
+
+
+
+
+  // examples
 
   document.body.sayHello = function () {
     alert("Hi!!!!");

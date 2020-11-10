@@ -16,7 +16,7 @@ function wholeArray() {
 }
 
 function flattenArray(array) {
-  let result = [];
+  /* let result = [];
   array.forEach((value) => {
     if (Array.isArray(value)) {
       result = [...result, ...flattenArray(value)];
@@ -24,7 +24,9 @@ function flattenArray(array) {
       result = [...result, value];
     }
   });
-  return result;
+  return result; */
+  return array.reduce((acc, val) => 
+  Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val), []);
 }
 
 function renderArray(array) {

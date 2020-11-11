@@ -10,24 +10,27 @@ const trees = wholeArray();
 function wholeArray() {
   let arr1 = Object.values(browserTree);
   let arr2 = Object.values(nodesHierarchy);
-  let result = [...arr1, ...arr2];
+  let result = [...arr1[1], ...arr2[1]];
 
   return result;
 }
 
 function flattenArray(array) {
   let result = [];
-  array.forEach((value) => {
-    if (Array.isArray(value)) {
-      result = [...result, ...flattenArray(value)];
-    } else {
-      result = [...result, value];
-    }
-  });
+
+  if(Array.isArray(array)) {
+    array.forEach((value) => {
+      if (value.children && value.children.length !== 0) {
+        result = [...result, value, ...flattenArray(value.children)];
+      } else {
+        result = [...result, value];
+      }
+    });
+  }
+
   return result;
-  /* return array.reduce((acc, val) => 
-  Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val), []); */
 }
+
 
 function renderArray(array) {
   const p = document.createElement("p");
@@ -41,7 +44,10 @@ export function renderPage() {
   const rootDiv = document.getElementById("root");
   if (tree !== null) rootDiv.append(tree);
 
-  const flatOurArray = flattenArray(trees);
+  let flatOurArray = flattenArray(trees);
+
+  flatOurArray = flatOurArray.map((el) => el.label)
+  
   rootDiv.append(renderArray(flatOurArray));
 }
 
